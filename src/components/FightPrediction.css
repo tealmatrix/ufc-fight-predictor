@@ -1,0 +1,304 @@
+.fight-prediction {
+  margin-top: 3rem;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.prediction-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.prediction-header h2 {
+  margin: 0;
+  color: #2d3748;
+}
+
+.close-fight-badge {
+  background: #f6ad55;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.winner-announcement {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+  position: relative;
+}
+
+.lock-badge {
+  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  animation: pulse 2s infinite;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.5);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.winner-label {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+}
+
+.winner-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.winner-confidence {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.winner-method {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-top: 0.5rem;
+}
+
+.confidence-tier {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0.75rem 0;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.fight-details {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+.detail-item {
+  font-weight: 600;
+}
+
+.detail-separator {
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+.win-probability {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.probability-bar {
+  display: flex;
+  height: 60px;
+  border-radius: 30px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.probability-fill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: width 0.5s ease-out;
+}
+
+.probability-fill.fighter1 {
+  background: #48bb78;
+}
+
+.probability-fill.fighter2 {
+  background: #4299e1;
+}
+
+.probability-labels {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  color: #2d3748;
+}
+
+.detailed-scores {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.detailed-scores h3 {
+  margin: 0 0 1.5rem;
+  color: #2d3748;
+  text-align: center;
+}
+
+.scores-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.fighter-scores h4 {
+  margin: 0 0 1rem;
+  color: #667eea;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.score-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background: #f7fafc;
+  border-radius: 6px;
+  color: #2d3748 !important;
+}
+
+.score-item span,
+.score-item strong {
+  color: #2d3748 !important;
+}
+
+.score-item.total {
+  background: #e6fffa;
+  border: 2px solid #38b2ac;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.round-simulation {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.round-simulation h3 {
+  margin: 0 0 1.5rem;
+  color: #2d3748;
+  text-align: center;
+}
+
+.rounds-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.round-item {
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.round-number {
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 0.5rem;
+}
+
+.round-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0.5rem;
+}
+
+.round-stat {
+  display: flex;
+  gap: 0.5rem;
+  color: #2d3748 !important;
+}
+
+.round-stat span,
+.round-stat strong {
+  color: #2d3748 !important;
+}
+
+.round-finish {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background: #48bb78;
+  color: white;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .scores-comparison {
+    grid-template-columns: 1fr;
+  }
+
+  .winner-announcement {
+    padding: 1.5rem;
+  }
+
+  .winner-name {
+    font-size: 1.75rem;
+  }
+
+  .winner-confidence {
+    font-size: 1.4rem;
+  }
+
+  .lock-badge {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .detailed-scores,
+  .round-simulation {
+    padding: 1.5rem;
+  }
+
+  .probability-fill {
+    font-size: 1rem;
+  }
+}

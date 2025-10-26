@@ -1,0 +1,205 @@
+.fight-card-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.fight-card-empty h2 {
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.fight-card-empty p {
+  color: #718096;
+  font-size: 1.1rem;
+}
+
+.fight-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.fight-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.fight-card-header h2 {
+  margin: 0;
+  color: #2d3748;
+}
+
+.fight-card-count {
+  background: #667eea;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.fights-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.fight-card-item {
+  position: relative;
+  background: #f7fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s;
+}
+
+.fight-card-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.fight-card-item.lock-fight {
+  border: 3px solid #f59e0b;
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+}
+
+.lock-of-night-banner {
+  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  color: white;
+  text-align: center;
+  padding: 0.75rem;
+  margin: -1.5rem -1.5rem 1rem -1.5rem;
+  border-radius: 10px 10px 0 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+  animation: pulse 2s infinite;
+}
+
+.fight-matchup {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.fighter-side {
+  text-align: center;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.fighter-side.winner {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+  font-weight: bold;
+  transform: scale(1.05);
+}
+
+.fighter-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: inherit;
+  margin-bottom: 0.25rem;
+}
+
+.fighter-nickname {
+  font-size: 0.9rem;
+  font-style: italic;
+  opacity: 0.8;
+  margin-bottom: 0.25rem;
+}
+
+.fighter-record {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+.win-prob {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.vs-badge {
+  background: #667eea;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.fight-prediction-summary {
+  text-align: center;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  border-top: 2px solid #e2e8f0;
+}
+
+.prediction-winner {
+  font-size: 1.1rem;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.prediction-confidence {
+  color: #667eea;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.remove-fight-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: #e53e3e;
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.remove-fight-btn:hover {
+  background: #c53030;
+  transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+  .fight-matchup {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .vs-badge {
+    padding: 0.5rem 1rem;
+    justify-self: center;
+  }
+
+  .fighter-name {
+    font-size: 1.1rem;
+  }
+
+  .win-prob {
+    font-size: 1.3rem;
+  }
+}

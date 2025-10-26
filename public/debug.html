@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fighter Data Debug</title>
+</head>
+<body>
+    <h1>Fighter Data Debug</h1>
+    <div id="results"></div>
+    
+    <script>
+        async function testFighterData() {
+            const resultsDiv = document.getElementById('results');
+            
+            try {
+                resultsDiv.innerHTML += '<p>Loading fighters_data_new.json...</p>';
+                
+                const response = await fetch('/fighters_data_new.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const fighters = await response.json();
+                resultsDiv.innerHTML += `<p>✅ Loaded ${fighters.length} fighters</p>`;
+                
+                // Test search for Saturday fighters
+                const saturdayFighters = [
+                    "Tom Aspinall",
+                    "Ciryl Gane", 
+                    "Umar Nurmagomedov",
+                    "Mackenzie Dern",
+                    "Virna Jandiroba"
+                ];
+                
+                resultsDiv.innerHTML += '<h3>Saturday Fighters Search:</h3>';
+                
+                saturdayFighters.forEach(name => {
+                    const found = fighters.find(f => 
+                        f.name && f.name.toLowerCase() === name.toLowerCase()
+                    );
+                    
+                    if (found) {
+                        resultsDiv.innerHTML += `<p>✅ ${name}: FOUND - Record: ${found.wins}-${found.losses}-${found.draws}</p>`;
+                    } else {
+                        resultsDiv.innerHTML += `<p>❌ ${name}: NOT FOUND</p>`;
+                    }
+                });
+                
+                // Test partial search
+                const partialResults = fighters.filter(f => 
+                    f.name && f.name.toLowerCase().includes('aspinall')
+                );
+                
+                resultsDiv.innerHTML += '<h3>Partial search for "aspinall":</h3>';
+                partialResults.forEach(f => {
+                    resultsDiv.innerHTML += `<p>- ${f.name} (${f.wins}-${f.losses}-${f.draws})</p>`;
+                });
+                
+            } catch (error) {
+                resultsDiv.innerHTML += `<p>❌ Error: ${error.message}</p>`;
+                console.error('Error:', error);
+            }
+        }
+        
+        // Run test when page loads
+        testFighterData();
+    </script>
+</body>
+</html>

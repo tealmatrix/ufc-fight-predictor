@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Tom Aspinall",
+    "nickname": "",
+    "height": "6' 5\"",
+    "weight": "253 lbs.",
+    "reach": "78\"",
+    "stance": "Orthodox",
+    "wins": 15,
+    "losses": 3,
+    "draws": 0,
+    "sig_strikes_landed_per_min": "8.07",
+    "striking_accuracy": "67%"
+  },
+  {
+    "name": "Ciryl Gane",
+    "nickname": "Bon Gamin",
+    "height": "6' 4\"",
+    "weight": "245 lbs.",
+    "reach": "81\"",
+    "stance": "Switch",
+    "wins": 13,
+    "losses": 2,
+    "draws": 0,
+    "sig_strikes_landed_per_min": "4.13",
+    "striking_accuracy": "58%"
+  },
+  {
+    "name": "Umar Nurmagomedov",
+    "nickname": "",
+    "height": "5' 8\"",
+    "weight": "135 lbs.",
+    "reach": "71\"",
+    "stance": "Southpaw",
+    "wins": 18,
+    "losses": 1,
+    "draws": 0,
+    "sig_strikes_landed_per_min": "4.75",
+    "striking_accuracy": "63%"
+  }
+]
