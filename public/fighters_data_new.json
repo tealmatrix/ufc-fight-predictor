@@ -18824,5 +18824,45 @@
       }
     ],
     "age": 31
+  },
+  {
+    "name": "Cody Durden",
+    "nickname": "",
+    "height": "5' 7\"",
+    "weight": "125 lbs.",
+    "reach": "69\"",
+    "stance": "Orthodox",
+    "dob": "Apr 17, 1991",
+    "wins": 18,
+    "losses": 6,
+    "draws": 1,
+    "sig_strikes_landed_per_min": "4.23",
+    "striking_accuracy": "44%",
+    "sig_strikes_absorbed_per_min": "3.27",
+    "striking_defense": "55%",
+    "takedown_avg": "2.85",
+    "takedown_accuracy": "41%",
+    "takedown_defense": "50%",
+    "submission_avg": "0.7",
+    "last_3_fights": [
+      {
+        "result": "loss",
+        "opponent": "Bruno Silva",
+        "method": "KO/TKO",
+        "round": "2"
+      },
+      {
+        "result": "win",
+        "opponent": "Jake Hadley",
+        "method": "Decision",
+        "round": "3"
+      },
+      {
+        "result": "win",
+        "opponent": "Charles Johnson",
+        "method": "Decision",
+        "round": "3"
+      }
+    ]
   }
 ]
