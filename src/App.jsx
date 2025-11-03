@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import FighterSelector from './components/FighterSelector';
 import FightPrediction from './components/FightPrediction';
 import FightCard from './components/FightCard';
+import AdminPage from './components/AdminPage';
 import { predictFight, simulateRounds } from './utils/fightPredictor';
 import './App.css';
 
@@ -13,7 +14,7 @@ function App() {
   const [simulation, setSimulation] = useState(null);
   const [loading, setLoading] = useState(true);
   const [fightCard, setFightCard] = useState([]);
-  const [viewMode, setViewMode] = useState('single'); // 'single' or 'card'
+  const [viewMode, setViewMode] = useState('single'); // 'single', 'card', or 'admin'
   const [numRounds, setNumRounds] = useState(5);
 
   useEffect(() => {
@@ -27,7 +28,29 @@ function App() {
       .then(data => {
         console.log('Loaded fighters:', data.length, 'fighters');
         console.log('First few fighters:', data.slice(0, 3));
-        setFighters(data);
+        
+        // Load custom fighters from localStorage
+        const customFighters = localStorage.getItem('custom_fighters');
+        if (customFighters) {
+          try {
+            const parsed = JSON.parse(customFighters);
+            console.log('Loaded custom fighters:', parsed.length);
+            
+            // Merge fighters - custom fighters override main database by name
+            const customNames = new Set(parsed.map(f => f.name.toLowerCase()));
+            const mainFighters = data.filter(f => !customNames.has(f.name.toLowerCase()));
+            const mergedFighters = [...mainFighters, ...parsed];
+            
+            console.log('Merged fighters:', mergedFighters.length, '(', data.length, 'from DB +', parsed.length, 'custom, -', data.length - mainFighters.length, 'overrides)');
+            setFighters(mergedFighters);
+          } catch (e) {
+            console.error('Error parsing custom fighters:', e);
+            setFighters(data);
+          }
+        } else {
+          setFighters(data);
+        }
+        
         setLoading(false);
       })
       .catch(err => {
@@ -89,6 +112,155 @@ function App() {
     return lockFightId;
   };
 
+  const handleAddFighter = async (newFighter) => {
+    try {
+      console.log('handleAddFighter called with:', newFighter);
+      
+      // Update the in-memory fighters list
+      setFighters(prev => {
+        const updated = [...prev, newFighter];
+        console.log('Updated fighters list, now has', updated.length, 'fighters');
+        return updated;
+      });
+      
+      // Save only custom fighters to localStorage
+      const existingCustom = localStorage.getItem('custom_fighters');
+      let customFighters = [];
+      if (existingCustom) {
+        customFighters = JSON.parse(existingCustom);
+      }
+      customFighters.push(newFighter);
+      localStorage.setItem('custom_fighters', JSON.stringify(customFighters));
+      
+      // Auto-backup to downloads
+      autoBackup(customFighters);
+      
+      console.log('Fighter successfully added:', newFighter.name);
+      console.log('Total custom fighters in localStorage:', customFighters.length);
+      return true;
+    } catch (error) {
+      console.error('Error adding fighter:', error);
+      return false;
+    }
+  };
+
+  const handleUpdateFighter = async (oldName, updatedFighter) => {
+    try {
+      console.log('handleUpdateFighter called:', oldName, '->', updatedFighter.name);
+      
+      // Update in-memory fighters list
+      setFighters(prev => {
+        const updated = prev.map(f => 
+          f.name === oldName ? updatedFighter : f
+        );
+        console.log('Updated fighters list');
+        return updated;
+      });
+      
+      // Check if it's a custom fighter in localStorage
+      const existingCustom = localStorage.getItem('custom_fighters');
+      if (existingCustom) {
+        let customFighters = JSON.parse(existingCustom);
+        const isCustom = customFighters.some(f => f.name === oldName);
+        
+        if (isCustom) {
+          // Update in localStorage
+          customFighters = customFighters.map(f => 
+            f.name === oldName ? updatedFighter : f
+          );
+          localStorage.setItem('custom_fighters', JSON.stringify(customFighters));
+          autoBackup(customFighters);
+          console.log('Fighter successfully updated in localStorage');
+        } else {
+          // Not a custom fighter, add to localStorage to override main database version
+          customFighters.push(updatedFighter);
+          localStorage.setItem('custom_fighters', JSON.stringify(customFighters));
+          autoBackup(customFighters);
+          console.log('Fighter added to localStorage as override');
+        }
+      } else {
+        // No custom fighters yet, create the list
+        const newList = [updatedFighter];
+        localStorage.setItem('custom_fighters', JSON.stringify(newList));
+        autoBackup(newList);
+        console.log('Created custom fighters list with updated fighter');
+      }
+      
+      return true;
+    } catch (error) {
+      console.error('Error updating fighter:', error);
+      return false;
+    }
+  };
+
+  const autoBackup = (fightersData) => {
+    // Only backup if there are fighters
+    if (!fightersData || fightersData.length === 0) return;
+    
+    try {
+      const json = JSON.stringify(fightersData, null, 2);
+      const blob = new Blob([json], {type: 'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `auto_backup_${new Date().toISOString().split('T')[0]}.json`;
+      // Don't auto-click, just make it available
+      // Store the URL for manual download if needed
+      console.log('Auto-backup ready. Total fighters:', fightersData.length);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Auto-backup failed:', error);
+    }
+  };
+
+  const handleDeleteFighter = async (fighterName) => {
+    try {
+      console.log('handleDeleteFighter called:', fighterName);
+      
+      // Check if it exists in localStorage custom fighters
+      const existingCustom = localStorage.getItem('custom_fighters');
+      let isCustomFighter = false;
+      
+      if (existingCustom) {
+        let customFighters = JSON.parse(existingCustom);
+        isCustomFighter = customFighters.some(f => f.name === fighterName);
+        
+        if (isCustomFighter) {
+          // Remove from localStorage
+          customFighters = customFighters.filter(f => f.name !== fighterName);
+          localStorage.setItem('custom_fighters', JSON.stringify(customFighters));
+          console.log('Fighter successfully removed from localStorage');
+          
+          // Reload fighters - will restore original if it was overridden
+          fetch('/fighters_data_new.json')
+            .then(res => res.json())
+            .then(data => {
+              const remaining = localStorage.getItem('custom_fighters');
+              if (remaining) {
+                const parsed = JSON.parse(remaining);
+                // Merge without duplicates - custom overrides main
+                const customNames = new Set(parsed.map(f => f.name.toLowerCase()));
+                const mainFighters = data.filter(f => !customNames.has(f.name.toLowerCase()));
+                setFighters([...mainFighters, ...parsed]);
+              } else {
+                setFighters(data);
+              }
+            });
+        } else {
+          // Not a custom fighter, can't delete from main database
+          console.log('Cannot delete - fighter is from main database');
+          alert('This fighter is from the main database and cannot be deleted. You can only delete custom fighters you\'ve added.');
+          return false;
+        }
+      }
+      
+      return true;
+    } catch (error) {
+      console.error('Error deleting fighter:', error);
+      return false;
+    }
+  };
+
   if (loading) {
     return (
       <div className="app">
@@ -118,9 +290,22 @@ function App() {
           >
             Fight Card ({fightCard.length})
           </button>
+          <button 
+            className={`toggle-btn ${viewMode === 'admin' ? 'active' : ''}`}
+            onClick={() => setViewMode('admin')}
+          >
+            Admin
+          </button>
         </div>
 
-        {viewMode === 'single' ? (
+        {viewMode === 'admin' ? (
+          <AdminPage 
+            fighters={fighters}
+            onAddFighter={handleAddFighter}
+            onUpdateFighter={handleUpdateFighter}
+            onDeleteFighter={handleDeleteFighter}
+          />
+        ) : viewMode === 'single' ? (
           <>
         <div className="fighter-selection">
           <FighterSelector

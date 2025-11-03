@@ -1,8 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './FighterSelector.css';
 
 function FighterSelector({ fighters, selectedFighter, onSelect, label, disabled }) {
   const [searchTerm, setSearchTerm] = useState('');
+
+  // Clear search term when fighter is deselected
+  useEffect(() => {
+    if (!selectedFighter) {
+      setSearchTerm('');
+    }
+  }, [selectedFighter]);
 
   const filteredFighters = fighters.filter(fighter =>
     fighter.name && fighter.name.toLowerCase().includes(searchTerm.toLowerCase())

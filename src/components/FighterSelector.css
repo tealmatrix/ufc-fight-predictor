@@ -166,15 +166,18 @@
   text-transform: uppercase;
 }
 
-.fight-result.win {
+.fight-result.win,
+.fight-result.w {
   color: #48bb78;
 }
 
-.fight-result.loss {
+.fight-result.loss,
+.fight-result.l {
   color: #f56565;
 }
 
-.fight-result.draw {
+.fight-result.draw,
+.fight-result.d {
   color: #ed8936;
 }
 
