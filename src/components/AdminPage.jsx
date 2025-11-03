@@ -158,9 +158,11 @@ function AdminPage({ fighters, onAddFighter, onUpdateFighter, onDeleteFighter })
       try {
         const success = await onUpdateFighter(selectedFighter.name, updatedFighter);
         if (success) {
-          setMessage({ text: `${formData.name} updated successfully!`, type: 'success' });
-          // Clear form and show success - no reload needed since setFighters updates state
-          handleCancelEdit();
+          setMessage({ text: `${formData.name} updated successfully! Reloading to apply changes...`, type: 'success' });
+          // Reload page to ensure localStorage merge happens correctly
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
         } else {
           setMessage({ text: 'Failed to update fighter', type: 'error' });
         }
@@ -219,7 +221,7 @@ function AdminPage({ fighters, onAddFighter, onUpdateFighter, onDeleteFighter })
     }
   };
 
-  // Show custom fighters OR fighters with 0-0-0 records (likely incomplete)
+  // Show custom fighters OR fighters with zero/missing stats (likely incomplete)
   const editableFighters = fighters.filter(f => {
     // Check if it's a custom fighter
     const customList = localStorage.getItem('custom_fighters');
@@ -232,8 +234,14 @@ function AdminPage({ fighters, onAddFighter, onUpdateFighter, onDeleteFighter })
       }
     }
     
-    // Also include fighters with 0-0-0 records (likely need updating)
-    if (f.wins === 0 && f.losses === 0 && f.draws === 0) return true;
+    // Also include fighters with zero stats (likely need updating)
+    // Check for missing/zero striking or grappling stats
+    const hasZeroStats = 
+      f.sig_strikes_landed_per_min === '0.00' || 
+      f.striking_accuracy === '0%' || 
+      f.takedown_avg === '0.00';
+    
+    if (hasZeroStats) return true;
     
     return false;
   });

@@ -36,12 +36,36 @@ function App() {
             const parsed = JSON.parse(customFighters);
             console.log('Loaded custom fighters:', parsed.length);
             
-            // Merge fighters - custom fighters override main database by name
-            const customNames = new Set(parsed.map(f => f.name.toLowerCase()));
-            const mainFighters = data.filter(f => !customNames.has(f.name.toLowerCase()));
-            const mergedFighters = [...mainFighters, ...parsed];
+            // Filter out invalid fighters (missing name)
+            const validCustom = parsed.filter(f => f && f.name);
+            if (validCustom.length < parsed.length) {
+              console.warn('Removed', parsed.length - validCustom.length, 'invalid fighters from localStorage');
+            }
             
-            console.log('Merged fighters:', mergedFighters.length, '(', data.length, 'from DB +', parsed.length, 'custom, -', data.length - mainFighters.length, 'overrides)');
+            // Remove duplicates by name (keep first occurrence)
+            const seen = new Set();
+            const deduped = validCustom.filter(f => {
+              const nameLower = f.name.toLowerCase();
+              if (seen.has(nameLower)) {
+                console.warn('Removing duplicate:', f.name);
+                return false;
+              }
+              seen.add(nameLower);
+              return true;
+            });
+            
+            // Save cleaned list back to localStorage if we removed duplicates
+            if (deduped.length < validCustom.length) {
+              console.log('Removed', validCustom.length - deduped.length, 'duplicates from localStorage');
+              localStorage.setItem('custom_fighters', JSON.stringify(deduped));
+            }
+            
+            // Merge fighters - custom fighters override main database by name
+            const customNames = new Set(deduped.map(f => f.name.toLowerCase()));
+            const mainFighters = data.filter(f => f && f.name && !customNames.has(f.name.toLowerCase()));
+            const mergedFighters = [...mainFighters, ...deduped];
+            
+            console.log('Merged fighters:', mergedFighters.length, '(', data.length, 'from DB +', deduped.length, 'custom, -', data.length - mainFighters.length, 'overrides)');
             setFighters(mergedFighters);
           } catch (e) {
             console.error('Error parsing custom fighters:', e);
