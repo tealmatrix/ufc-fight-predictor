@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recover Fighter Data</title>
+</head>
+<body>
+    <h1>Fighter Data Recovery</h1>
+    <button onclick="checkData()">Check localStorage</button>
+    <button onclick="saveToFile()">Save to File</button>
+    <pre id="output"></pre>
+    
+    <script>
+        function checkData() {
+            const customFighters = localStorage.getItem('custom_fighters');
+            if (customFighters) {
+                const parsed = JSON.parse(customFighters);
+                document.getElementById('output').textContent = 
+                    'Found ' + parsed.length + ' custom fighters:\n\n' + 
+                    JSON.stringify(parsed, null, 2);
+            } else {
+                document.getElementById('output').textContent = 'No custom fighters found in localStorage';
+            }
+        }
+        
+        function saveToFile() {
+            const customFighters = localStorage.getItem('custom_fighters');
+            if (customFighters) {
+                const blob = new Blob([customFighters], {type: 'application/json'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'custom_fighters_backup.json';
+                a.click();
+            }
+        }
+    </script>
+</body>
+</html>

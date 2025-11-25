@@ -1,0 +1,657 @@
+[
+  {
+    "name": "Marco Tulio",
+    "nickname": "Matuto",
+    "wins": 14,
+    "losses": 1,
+    "draws": 0,
+    "height": "6' 0\"",
+    "weight": " 185 lbs",
+    "reach": "74\"",
+    "stance": "Orthodox",
+    "dob": "Jun 13, 1994",
+    "sig_strikes_landed_per_min": "7.54",
+    "striking_accuracy": "60%",
+    "sig_strikes_absorbed_per_min": "2.53",
+    "striking_defense": "61%",
+    "takedown_avg": "0.88",
+    "takedown_accuracy": "20%",
+    "takedown_defense": "0%",
+    "submission_avg": "0.4",
+    "last_3_fights": [      
+      {
+        "result": "win",
+        "opponent": "Tresean Gore",
+        "method": "KO/TKO",
+        "round": "2"
+      },
+      {
+        "result": "win",
+        "opponent": "Ihor Potieria",
+        "method": "KO/TKO",
+        "round": "1"
+      }
+    ]
+  },
+  {
+    "name": "Christian Leroy Duncan",
+    "nickname": "CLD",
+    "wins": 12,
+    "losses": 2,
+    "draws": 0,
+    "height": "6' 2\"",
+    "weight": " 185 lbs",
+    "reach": "79\"",
+    "stance": "Switch",
+    "dob": "Jul 24, 1995",
+    "sig_strikes_landed_per_min": "4.83",
+    "striking_accuracy": "59%",
+    "sig_strikes_absorbed_per_min": "2.94",
+    "striking_defense": "51%",
+    "takedown_avg": "0.22",
+    "takedown_accuracy": "42%",
+    "takedown_defense": "71%",
+    "submission_avg": "0.0",
+    "last_3_fights": [      
+      {
+        "result": "win",
+        "opponent": "Eric Anders",
+        "method": "KO/TKO",
+        "round": "1"
+      },
+      {
+        "result": "win",
+        "opponent": "Andrey Pulyaev",
+        "method": "Decision - Unanimous",
+        "round": "3"
+      },
+      {
+        "result": "loss",
+        "opponent": "Gregory Rodrigues",
+        "method": "Decision - Unanimous",
+        "round": "3"
+      }
+    ]
+  },
+  {
+    "name": "Joseph Morales",
+    "nickname": "Bopo",
+    "wins": 14,
+    "losses": 2,
+    "draws": 0,
+    "height": "5' 6\"",
+    "weight": " 125 lbs",
+    "reach": "69\"",
+    "stance": "Switch",
+    "dob": "Aug 22, 1994",
+    "sig_strikes_landed_per_min": "2.02",
+    "striking_accuracy": "40%",
+    "sig_strikes_absorbed_per_min": "2.11",
+    "striking_defense": "57%",
+    "takedown_avg": "1.23",
+    "takedown_accuracy": "42%",
+    "takedown_defense": "28%",
+    "submission_avg": "2.9",
+    "last_3_fights": [      
+      {
+        "result": "win",
+        "opponent": "Alibi Idiris",
+        "method": "Submission",
+        "round": "2"
+      },
+      {
+        "result": "loss",
+        "opponent": "Eric Shelton",
+        "method": "Decision",
+        "round": "3"
+      },
+      {
+        "result": "loss",
+        "opponent": "Deiveson Figueiredo",
+        "method": "KO/TKO",
+        "round": "2"
+      }
+    ]
+  },  
+  {
+    "name": "Randy Brown",
+    "nickname": "Rudeboy",
+    "wins": 20,
+    "losses": 6,
+    "draws": 0,
+    "height": "6' 3\"",
+    "weight": " 170 lbs",
+    "reach": "78\"",
+    "stance": "Orthodox",
+    "dob": "Jul 08, 1990",
+    "sig_strikes_landed_per_min": "4.47",
+    "striking_accuracy": "47%",
+    "sig_strikes_absorbed_per_min": "3.26",
+    "striking_defense": "54%",
+    "takedown_avg": "0.79",
+    "takedown_accuracy": "39%",
+    "takedown_defense": "73%",
+    "submission_avg": "0.6",
+    "last_3_fights": [      
+      {
+        "result": "win",
+        "opponent": "Nicolas Dalby",
+        "method": "KO/TKO",
+        "round": "2"
+      },
+      {
+        "result": "loss",
+        "opponent": "Brian Battle",
+        "method": "Decision - Split",
+        "round": "3"
+      },
+      {
+        "result": "win",
+        "opponent": "Elizeu Zaleski dos Santos",
+        "method": "Decision - Unanimous",
+        "round": "3"
+      }
+    ]
+  },
+  {
+    "name": "Daniel Marcos",
+    "nickname": "Soncora",
+    "wins": 17,
+    "losses": 1,
+    "draws": 0,
+    "height": "5' 7\"",
+    "weight": " 135 lbs",
+    "reach": "69\"",
+    "stance": "Orthodox",
+    "dob": "Mar 07, 1993",
+    "sig_strikes_landed_per_min": "5.11",
+    "striking_accuracy": "53%",
+    "sig_strikes_absorbed_per_min": "3.88",
+    "striking_defense": "61%",
+    "takedown_avg": "0.99",
+    "takedown_accuracy": "46%",
+    "takedown_defense": "84%",
+    "submission_avg": "0.0",
+    "last_3_fights": [      
+      {
+        "result": "loss",
+        "opponent": "Montel Jackson",
+        "method": "Decision - Unanimous",
+        "round": "3"
+      },
+      {
+        "result": "win",
+        "opponent": "Adrian Yanez",
+        "method": "Decision - Split",
+        "round": "3"
+      },
+      {
+        "result": "win",
+        "opponent": "John Castaneda",
+        "method": "Decision - Unanimous",
+        "round": "3"
+      }
+    ]
+  },
+  {
+    "name": "Miles Johns",
+    "nickname": "Chapo",
+    "wins": 15,
+    "losses": 4,
+    "draws": 0,
+    "height": "5' 7\"",
+    "weight": "135 lbs",
+    "reach": " 68\"",
+    "stance": "Orthodox",
+    "dob": "Mar 30, 1994",
+    "sig_strikes_landed_per_min": "3.38",
+    "striking_accuracy": "44%",
+    "sig_strikes_absorbed_per_min": "2.99",
+    "striking_defense": "66%",
+    "takedown_avg": "1.29",
+    "takedown_accuracy": "26%",
+    "takedown_defense": "83%",
+    "submission_avg": "0.0",
+    "last_3_fights": [
+      {
+        "result": "loss",
+        "opponent": "Jean Matsumoto",
+        "method": "Decision - Split",
+        "round": "3"
+      },
+      {
+        "result": "loss",
+        "opponent": "Felipe Lima",
+        "method": "Decision - Unanimous",
+        "round": "3"
+      },
+      {
+        "result": "win",
+        "opponent": "Douglas Silva de Andrade",
+        "method": "Decision - Unanimous",
+        "round": "3"
+      }
+    ]
+  },
+  {
+    "name": "Denise Gomes",
+    "nickname": "Dee",
+    "wins": 11,
+    "losses": 3,
+    "draws": 0,
+    "height": "5' 2\"",
+    "weight": "115 lbs.",
+    "reach": "63\"",
+    "stance": "Orthodox",
+    "dob": "Dec 30, 1999",
+    "sig_strikes_landed_per_min": "4.59",
+    "striking_accuracy": "50%",
+    "sig_strikes_absorbed_per_min": "3.04",
+    "striking_defense": " 51%",
+    "takedown_avg": "1.19",
+    "takedown_accuracy": " 36%",
+    "takedown_defense": "67%",
+    "submission_avg": "0.8",
+    "last_3_fights": [
+      {
+        "result": "win",
+        "opponent": "Jean Matsumoto",
+        "method": "KO/TKO",
+        "round": "2"
+      },
+      {
+        "result": "win",
+        "opponent": "Felipe Lima",
+        "method": "Decision - Unanimous",
+        "round": "3"
+      },
+      {
+        "result": "win",
+        "opponent": "Douglas Silva de Andrade",
+        "method": "Decision - Split",
+        "round": "3"
+      }
+    ]
+  },
+  {
+    "name": "Josh Hokit",
+    "nickname": "",
+    "wins": 6,
+    "losses": 0,
+    "draws": 0,
+    "height": "6' 1\"",
+    "weight": "238 lbs.",
+    "reach": "73\"",
+    "stance": "Orthodox",
+    "dob": "Nov 12, 1997",
+    "sig_strikes_landed_per_min": "4.43",
+    "striking_accuracy": "77%",
+    "sig_strikes_absorbed_per_min": "1.15",
+    "striking_defense": "56%",
+    "takedown_avg": " 14.75",
+    "takedown_accuracy": " 46%",
+    "takedown_defense": "0%",
+    "submission_avg": "0.0",
+    "last_3_fights": []
+  },
+  {
+    "name": "Mayra Bueno Silva",
+    "nickname": "Sheetara",
+    "wins": 10,
+    "losses": 5,
+    "draws": 1,
+    "height": "5' 6\"",
+    "weight": "135 lbs.",
+    "reach": "66\"",
+    "stance": "Orthodox",
+    "dob": "Aug 22, 1991",
+    "sig_strikes_landed_per_min": "3.83",
+    "striking_accuracy": "58%",
+    "sig_strikes_absorbed_per_min": " 4.85",
+    "striking_defense": "51%",
+    "takedown_avg": "0.57",
+    "takedown_accuracy": "29%",
+    "takedown_defense": "63%",
+    "submission_avg": "1.5",
+    "last_3_fights": [
+      {
+        "result": "loss",
+        "opponent": "Jasmine Jasudavicius",
+        "method": "Decision - Unanimous",
+        "round": "3"
+      },
+      {
+        "result": "loss",
+        "opponent": "Macy Chiasson",
+        "method": "TKO - Doctor's Stoppage",
+        "round": "2"
+      },
+      {
+        "result": "loss",
+        "opponent": "Raquel Pennington",
+        "method": "Decision - Unanimous",
+        "round": "3"
+      }
+    ]
+  },
+  {
+    "name": "Jacqueline Cavalcanti",
+    "nickname": "",
+    "wins": 9,
+    "losses": 1,
+    "draws": 0,
+    "height": "5' 8\"",
+    "weight": "135 lbs.",
+    "reach": "70\"",
+    "stance": "Orthodox",
+    "dob": "Aug 29, 1997",
+    "sig_strikes_landed_per_min": "5.73",
+    "striking_accuracy": "46%",
+    "sig_strikes_absorbed_per_min": "3.32",
+    "striking_defense": "70%",
+    "takedown_avg": "0.00",
+    "takedown_accuracy": "0%",
+    "takedown_defense": "84%",
+    "submission_avg": "0.0",
+    "last_3_fights": [
+      {
+        "result": "win",
+        "opponent": "Julia Avila",
+        "method": "Decision - Unanimous",
+        "round": "3"
+      },
+      {
+        "result": "win",
+        "opponent": "Nora Cornolle",
+        "method": "Decision - Split",
+        "round": "3"
+      },
+      {
+        "result": "win",
+        "opponent": "Josiane Nunes",
+        "method": "Decision - Split",
+        "round": "3"
+      }
+    ]
+  },
+  {
+    "name": "Cristian Quiñonez",
+    "nickname": "Problema",
+    "wins": 18,
+    "losses": 5,
+    "draws": 0,
+    "height": "5' 8\"",
+    "weight": "135 lbs.",
+    "reach": "70\"",
+    "stance": "Orthodox",
+    "dob": "Apr 26, 1996",
+    "sig_strikes_landed_per_min": "4.19",
+    "striking_accuracy": "40%",
+    "sig_strikes_absorbed_per_min": "4.55",
+    "striking_defense": "55%",
+    "takedown_avg": "1.37",
+    "takedown_accuracy": "37%",
+    "takedown_defense": "84%",
+    "submission_avg": "0.0",
+    "last_3_fights": [
+      {
+        "result": "loss",
+        "opponent": "Raoni Barcelos",
+        "method": "Submission",
+        "round": "3"
+      },
+      {
+        "result": "loss",
+        "opponent": "Kyung Ho Kang",
+        "method": "Submission",
+        "round": "1"
+      },
+      {
+        "result": "win",
+        "opponent": "Khalid Taha",
+        "method": "KO/TKOs",
+        "round": "1"
+      }
+    ]
+  },
+  {
+    "name": "Jamall Emmers",
+    "nickname": "Pretty Boy",
+    "wins": 21,
+    "losses": 8,
+    "draws": 0,
+    "height": "5' 10\"",
+    "weight": "145 lbs.",
+    "reach": "74\"",
+    "stance": "Orthodox",
+    "dob": "Jul 24, 1989",
+    "sig_strikes_landed_per_min": "5.45",
+    "striking_accuracy": "49%",
+    "sig_strikes_absorbed_per_min": "4.07",
+    "striking_defense": "56%",
+    "takedown_avg": "1.74",
+    "takedown_accuracy": "40%",
+    "takedown_defense": "80%",
+    "submission_avg": "0.2",
+    "last_3_fights": [
+      {
+        "result": "win",
+        "opponent": "Gabriel Miranda",
+        "method": "KO/TKO",
+        "round": "1"
+      },
+      {
+        "result": "loss",
+        "opponent": "Nate Landwehr",
+        "method": "KO/TKO",
+        "round": "1"
+      },
+      {
+        "result": "win",
+        "opponent": "Dennis Buzukja",
+        "method": "KO/TKO",
+        "round": "1"
+      }
+    ]
+  },
+  {
+    "name": "Ricky Simon",
+    "nickname": "",
+    "wins": 22,
+    "losses": 6,
+    "draws": 0,
+    "height": "5' 6\"",
+    "weight": "135 lbs.",
+    "reach": "69\"",
+    "stance": "Orthodox",
+    "dob": "Aug 31, 1992",
+    "sig_strikes_landed_per_min": " 2.93",
+    "striking_accuracy": "44%",
+    "sig_strikes_absorbed_per_min": "3.72",
+    "striking_defense": "61%",
+    "takedown_avg": "5.01",
+    "takedown_accuracy": "43%",
+    "takedown_defense": "75%",
+    "submission_avg": "0.3",
+    "last_3_fights": [
+      {
+        "result": "win",
+        "opponent": "Cameron Smotherman",
+        "method": "Decision - Unanimous",
+        "round": "3"
+      },
+      {
+        "result": "win",
+        "opponent": "Javid Basharat",
+        "method": "KO/TKO",
+        "round": "1"
+      },
+      {
+        "result": "loss",
+        "opponent": "Vinicius Oliveira",
+        "method": "Decision - Unanimous",
+        "round": "3"
+      }
+    ]
+  },
+  {
+    "name": "Chris Padilla",
+    "nickname": "Taco",
+    "wins": 16,
+    "losses": 6,
+    "draws": 0,
+    "height": "5' 9\"",
+    "weight": "155 lbs.",
+    "reach": "74\"",
+    "stance": "Orthodox",
+    "dob": "Sep 14, 1995",
+    "sig_strikes_landed_per_min": "4.13",
+    "striking_accuracy": "51%",
+    "sig_strikes_absorbed_per_min": "3.68",
+    "striking_defense": "57%",
+    "takedown_avg": "1.56",
+    "takedown_accuracy": "30%",
+    "takedown_defense": "100%",
+    "submission_avg": "0.5",
+    "last_3_fights": [
+      {
+        "result": "win",
+        "opponent": "Jai Herbert",
+        "method": "Decision - Split",
+        "round": "3"
+      },
+      {
+        "result": "win",
+        "opponent": "Rongzhu",
+        "method": "TKO Doctor's Stoppage",
+        "round": "2"
+      },
+      {
+        "result": "win",
+        "opponent": "James Llontop",
+        "method": "Submission",
+        "round": "1"
+      }
+    ]
+  },
+  {
+    "name": "Uroš Medić",
+    "nickname": "The Doctor",
+    "wins": 11,
+    "losses": 3,
+    "draws": 0,
+    "height": "6' 1\"",
+    "weight": "170 lbs.",
+    "reach": "71\"",
+    "stance": "Southpaw",
+    "dob": "Apr 25, 1993",
+    "sig_strikes_landed_per_min": "5.47",
+    "striking_accuracy": "60%",
+    "sig_strikes_absorbed_per_min": "3.50",
+    "striking_defense": "56%",
+    "takedown_avg": "0.36",
+    "takedown_accuracy": "50%",
+    "takedown_defense": "55%",
+    "submission_avg": "0.0",
+    "last_3_fights": [
+      {
+        "result": "win",
+        "opponent": "Gilbert Urbina",
+        "method": "KO/TKO",
+        "round": "1"
+      },
+      {
+        "result": "loss",
+        "opponent": "Punahele Soriano",
+        "method": "KO/TKO",
+        "round": "1"
+      },
+      {
+        "result": "win",
+        "opponent": "Tim Means",
+        "method": "KO/TKO",
+        "round": "1"
+      }
+    ]
+  },
+  {
+    "name": "Muslim Salikhov",
+    "nickname": "King of Kung Fu",
+    "wins": 22,
+    "losses": 5,
+    "draws": 0,
+    "height": "5' 11\"",
+    "weight": "170 lbs",
+    "reach": "70\"",
+    "stance": "Orthodox",
+    "dob": "Jun 09, 1984 ",
+    "sig_strikes_landed_per_min": "3.39",
+    "striking_accuracy": "49%",
+    "sig_strikes_absorbed_per_min": "2.92",
+    "striking_defense": "62%",
+    "takedown_avg": "1.08",
+    "takedown_accuracy": "32%",
+    "takedown_defense": "72%",
+    "submission_avg": "0.0",
+    "last_3_fights": [
+      {
+        "result": "win",
+        "opponent": "Carlos Leal",
+        "method": "KO/TKO",
+        "round": "1"
+      },
+      {
+        "result": "loss",
+        "opponent": "Song Kenan",
+        "method": "KO/TKO",
+        "round": "1"
+      },
+      {
+        "result": "win",
+        "opponent": "Santiago Ponzinibbio",
+        "method": "Decision - Split",
+        "round": "3"
+      }
+    ]
+  },
+  {
+    "name": "Matt Schnell",
+    "nickname": "Danger",
+    "wins": 17,
+    "losses": 9,
+    "draws": 0,
+    "height": "5' 8\"",
+    "weight": "125 lbs.",
+    "reach": " 70\"",
+    "stance": "Orthodox",
+    "dob": "Jan 15, 1990",
+    "sig_strikes_landed_per_min": "4.13",
+    "striking_accuracy": "40%",
+    "sig_strikes_absorbed_per_min": "4.17",
+    "striking_defense": "55%",
+    "takedown_avg": "0.49",
+    "takedown_accuracy": "40%",
+    "takedown_defense": "43%",
+    "submission_avg": "1.2",
+    "last_3_fights": [
+            {
+        "result": "win",
+        "opponent": "Jimmy Flick",
+        "method": "Decision - Unanimous",
+        "round": "3"
+      },
+      {
+        "result": "loss",
+        "opponent": "Cody Durden",
+        "method": "Submission",
+        "round": "2"
+      },
+      {
+        "result": "loss",
+        "opponent": "Steve Erceg",
+        "method": "KO/TKO",
+        "round": "2"
+      }
+    ]
+  }
+]

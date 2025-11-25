@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Fighter Storage</title>
+</head>
+<body>
+    <h1>Fighter Storage Check</h1>
+    <button onclick="checkStorage()">Check localStorage</button>
+    <button onclick="exportData()">Export Data</button>
+    <pre id="output"></pre>
+    
+    <script>
+        function checkStorage() {
+            const customFighters = localStorage.getItem('custom_fighters');
+            if (customFighters) {
+                const parsed = JSON.parse(customFighters);
+                const output = document.getElementById('output');
+                output.textContent = 'Found ' + parsed.length + ' custom fighters:\n\n';
+                parsed.forEach(f => {
+                    output.textContent += f.name + ' (' + f.wins + '-' + f.losses + '-' + f.draws + ')\n';
+                });
+                
+                // Check for Eric McConico
+                const eric = parsed.find(f => f.name.toLowerCase().includes('mcconico'));
+                if (eric) {
+                    output.textContent += '\n✓ Eric McConico FOUND in localStorage\n';
+                    output.textContent += JSON.stringify(eric, null, 2);
+                } else {
+                    output.textContent += '\n✗ Eric McConico NOT in localStorage\n';
+                }
+            } else {
+                document.getElementById('output').textContent = 'No custom fighters in localStorage';
+            }
+        }
+        
+        function exportData() {
+            const customFighters = localStorage.getItem('custom_fighters');
+            if (customFighters) {
+                const blob = new Blob([customFighters], {type: 'application/json'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'custom_fighters_recovery.json';
+                a.click();
+            }
+        }
+    </script>
+</body>
+</html>

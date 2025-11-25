@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permanent Fighter Restore - UFC Fight Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .container {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #d20a0a;
+            margin-bottom: 10px;
+        }
+        .warning {
+            background: #4d3a1a;
+            border: 2px solid #7a5a2d;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .info {
+            background: #1a3a4d;
+            border: 2px solid #2d5a7a;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .success {
+            background: #1a4d2e;
+            border: 2px solid #2d7a4c;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        button {
+            background: #d20a0a;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #a00808;
+        }
+        button.secondary {
+            background: #555;
+        }
+        button.secondary:hover {
+            background: #777;
+        }
+        .steps {
+            margin: 20px 0;
+        }
+        .steps li {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        code {
+            background: #333;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🥊 Permanent Custom Fighters Restore</h1>
+        <p>Restore your 53 custom fighters and set up automatic backups to prevent future data loss.</p>
+
+        <div class="warning">
+            <h3>⚠️ Why This Happened</h3>
+            <p><strong>localStorage is not permanent.</strong> Browser localStorage can be cleared by:</p>
+            <ul>
+                <li>Clearing browser data/cache</li>
+                <li>Using private/incognito mode</li>
+                <li>Browser updates or system restarts (sometimes)</li>
+                <li>Browser storage limits</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h3>✅ The Solution</h3>
+            <p>This tool will:</p>
+            <ol class="steps">
+                <li>Restore all 53 fighters to the correct <code>custom_fighters</code> localStorage key</li>
+                <li>Create an automatic backup file in your project</li>
+                <li>Show you how to set up auto-restore on page load (optional)</li>
+            </ol>
+        </div>
+
+        <div style="margin: 30px 0;">
+            <button onclick="step1_restore()">🔄 Step 1: Restore Fighters Now</button>
+            <button class="secondary" onclick="checkStorage()">👀 Check Current Storage</button>
+        </div>
+
+        <div id="status" class="status"></div>
+
+        <div id="step2" style="display: none;" class="success">
+            <h3>✅ Step 1 Complete!</h3>
+            <p><strong>53 fighters restored successfully!</strong></p>
+            
+            <h3>📥 Step 2: Download Permanent Backup</h3>
+            <p>Save this backup file to your Downloads folder for easy recovery:</p>
+            <button onclick="downloadBackup()">💾 Download Backup File</button>
+            
+            <h3>🔒 Step 3: Prevent Future Loss (Optional)</h3>
+            <p>Add this code to your app to auto-restore from backup if localStorage is ever cleared:</p>
+            <details>
+                <summary style="cursor: pointer; padding: 10px; background: #333; border-radius: 5px; margin: 10px 0;">
+                    <strong>Click to show auto-restore instructions</strong>
+                </summary>
+                <div style="margin-top: 15px;">
+                    <p>I can modify your <code>App.jsx</code> to check for your backup file and auto-restore if needed.</p>
+                    <p>Or, just keep the backup file safe and use this restore page whenever needed!</p>
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <script>
+        const backupData = [{"name":"Robert Valentin","nickname":"Robzilla","wins":11,"losses":6,"draws":0,"height":"6'2\"","weight":"186","reach":"77","stance":"Orthodox","dob":"Mar 31, 1995","sig_strikes_landed_per_min":"1.13","striking_accuracy":"57%","sig_strikes_absorbed_per_min":"2.83","striking_defense":"33 %","takedown_avg":"0.00","takedown_accuracy":"0%","takedown_defense":"55%","submission_avg":"1.31","last_3_fights":[]},{"name":"Jackson McVey","nickname":"The Moose","wins":6,"losses":1,"draws":0,"height":"6' 4\"","weight":"185 ","reach":"77","stance":"Southpaw","dob":"Mar 25, 1999","sig_strikes_landed_per_min":"1.12","striking_accuracy":"27%","sig_strikes_absorbed_per_min":"1.95","striking_defense":"22%","takedown_avg":"0.00","takedown_accuracy":"0%","takedown_defense":"0%","submission_avg":"0.0","last_3_fights":[]},{"name":"Miles Johns","nickname":"Chapo","height":" 5' 7\"","weight":" 135","reach":"68\"","stance":"Orthodox","dob":" Mar 30, 1994","wins":15,"losses":4,"draws":0,"sig_strikes_landed_per_min":"3.38","striking_accuracy":"44%","sig_strikes_absorbed_per_min":"2.99","striking_defense":"67","takedown_avg":"1.29","takedown_accuracy":" 26%","takedown_defense":"83 %","submission_avg":"0.0","last_3_fights":[]},{"name":"Daniel Marcos","nickname":"Soncora","height":"5' 7\"","weight":"135 lbs","reach":"69\"","stance":"Orthodox","dob":"Mar 07, 1993","wins":17,"losses":1,"draws":0,"sig_strikes_landed_per_min":"5.11","striking_accuracy":"54%","sig_strikes_absorbed_per_min":"3.88","striking_defense":"62 %","takedown_avg":"0.99","takedown_accuracy":"46%","takedown_defense":"85 %","submission_avg":"0.0","last_3_fights":[]},{"name":"Tecia Pennington","nickname":"Tiny Tornado","height":"5' 1\"","weight":"115 lbs.","reach":"60\"","stance":"Orthodox","dob":"Aug 16, 1989","wins":15,"losses":7,"draws":0,"sig_strikes_landed_per_min":"4.78","striking_accuracy":"48%","sig_strikes_absorbed_per_min":"3.48","striking_defense":"61%","takedown_avg":"0.54","takedown_accuracy":"13%","takedown_defense":"62%","submission_avg":"0.1","last_3_fights":[{"result":"W","opponent":"Luana Pinheiro","method":"Decision - Unanimous","round":"3"},{"result":"W","opponent":"Carla Esparza","method":"Decision - Unanimous","round":"3"},{"result":"L","opponent":"Tabatha Ricci","method":"Decision - Split","round":"3"}]},{"name":"Denise Gomes","nickname":"Dee","height":" 5' 2\"","weight":"115 lbs.","reach":" 63\"","stance":"Orthodox","dob":"Dec 30, 1999","wins":11,"losses":3,"draws":0,"sig_strikes_landed_per_min":"4.59","striking_accuracy":"51%","sig_strikes_absorbed_per_min":"3.04","striking_defense":"51 %","takedown_avg":"1.19","takedown_accuracy":"36%","takedown_defense":"67%","submission_avg":"0.8","last_3_fights":[]},{"name":"Josh Hokit","nickname":"","height":" 6' 1\"","weight":"238 lbs.","reach":"73\"","stance":"Orthodox","dob":"Nov 12, 1997","wins":6,"losses":0,"draws":0,"sig_strikes_landed_per_min":"4.43","striking_accuracy":"77%","sig_strikes_absorbed_per_min":"1.15","striking_defense":"56 %","takedown_avg":"14.75","takedown_accuracy":"46%","takedown_defense":"0%","submission_avg":"0.0","last_3_fights":[]},{"name":"Mayra Bueno Silva","nickname":"Sheetara","height":" 5' 6\"","weight":"135 lbs.","reach":" 66\"","stance":"Orthodox","dob":" 66\"","wins":10,"losses":5,"draws":1,"sig_strikes_landed_per_min":"3.83","striking_accuracy":"59%","sig_strikes_absorbed_per_min":"4.85","striking_defense":"52 %","takedown_avg":"0.57","takedown_accuracy":"29%","takedown_defense":"63%","submission_avg":"1.5","last_3_fights":[]},{"name":"Jacqueline Cavalcanti","nickname":"","height":"5' 8\"","weight":"135 lbs.","reach":"70\"","stance":"Orthodox","dob":"Aug 29, 1997","wins":9,"losses":1,"draws":0,"sig_strikes_landed_per_min":"5.73","striking_accuracy":"46%","sig_strikes_absorbed_per_min":"3.32","striking_defense":"70 %","takedown_avg":"0.00","takedown_accuracy":"0%","takedown_defense":"84%","submission_avg":"0.0","last_3_fights":[]},{"name":"Cristian Quiñonez","nickname":"Problema","height":" 5' 8\"","weight":"135 lbs.","reach":"70\"","stance":"Orthodox","dob":"Apr 26, 1996","wins":18,"losses":5,"draws":0,"sig_strikes_landed_per_min":"4.19","striking_accuracy":"40%","sig_strikes_absorbed_per_min":"4.55","striking_defense":"55 %","takedown_avg":"1.37","takedown_accuracy":"37%","takedown_defense":"84%","submission_avg":"0.0","last_3_fights":[]},{"name":"Jamall Emmers","nickname":"Pretty Boy","height":"5' 10\"","weight":"145 lbs.","reach":"74\"","stance":"Orthodox","dob":"Jul 24, 1989","wins":21,"losses":8,"draws":0,"sig_strikes_landed_per_min":"5.45","striking_accuracy":"49%","sig_strikes_absorbed_per_min":"4.07","striking_defense":"57 %","takedown_avg":"1.74","takedown_accuracy":"40%","takedown_defense":"80%","submission_avg":"0.2","last_3_fights":[]},{"name":"Christian Leroy Duncan","nickname":"CLD","height":" 6' 2\"","weight":"185 lbs","reach":"79\"","stance":"Switch","dob":"Jul 24, 1995","wins":12,"losses":2,"draws":0,"sig_strikes_landed_per_min":"4.83","striking_accuracy":"59%","sig_strikes_absorbed_per_min":"2.94","striking_defense":"51 %","takedown_avg":"0.22","takedown_accuracy":"11%","takedown_defense":"71%","submission_avg":"0.0","last_3_fights":[]},{"name":"Marco Tulio","nickname":"Matuto","height":"6' 0\"","weight":"185 lbs.","reach":"74\"","stance":"Orthodox","dob":"Jun 13, 1994","wins":14,"losses":0,"draws":0,"sig_strikes_landed_per_min":"7.54","striking_accuracy":"60%","sig_strikes_absorbed_per_min":"2.53","striking_defense":"62 %","takedown_avg":"0.88","takedown_accuracy":" 20%","takedown_defense":"0%","submission_avg":" 0.4","last_3_fights":[]},{"name":"Ricky Simon","nickname":"","height":" 5' 6\"","weight":"135 lbs.","reach":"69\"","stance":"Orthodox","dob":"Aug 31, 1992","wins":22,"losses":4,"draws":0,"sig_strikes_landed_per_min":"2.93","striking_accuracy":"44%","sig_strikes_absorbed_per_min":"3.72","striking_defense":"62 %","takedown_avg":"5.01","takedown_accuracy":" 43%","takedown_defense":" 75%","submission_avg":"0.3","last_3_fights":[]},{"name":"Chris Padilla","nickname":"Taco","height":"5' 9\"","weight":"155 lbs.","reach":"74\"","stance":"Orthodox","dob":"Sep 14, 1995","wins":16,"losses":6,"draws":0,"sig_strikes_landed_per_min":"4.13","striking_accuracy":"52%","sig_strikes_absorbed_per_min":"3.68","striking_defense":"58 %","takedown_avg":"1.56","takedown_accuracy":"30%","takedown_defense":" 100%","submission_avg":"0.5","last_3_fights":[]},{"name":"Muslim Salikhov","nickname":"King of Kung Fu","height":"5' 11\"","weight":"170 lbs.","reach":"70\"","stance":"Orthodox","dob":"Jun 09, 1984","wins":22,"losses":5,"draws":0,"sig_strikes_landed_per_min":"3.39","striking_accuracy":"50%","sig_strikes_absorbed_per_min":"2.92","striking_defense":"63 %","takedown_avg":"1.08","takedown_accuracy":"32%","takedown_defense":"72%","submission_avg":"0.0","last_3_fights":[]},{"name":"Uroš Medić","nickname":"The Doctor","height":"6' 1\"","weight":"170 lbs","reach":"71\"","stance":"Southpaw","dob":"Apr 25, 1993","wins":11,"losses":3,"draws":0,"sig_strikes_landed_per_min":"5.47","striking_accuracy":"61%","sig_strikes_absorbed_per_min":"3.50","striking_defense":"56 %","takedown_avg":"0.36","takedown_accuracy":"50%","takedown_defense":"55%","submission_avg":"0.0","last_3_fights":[]},{"name":"Matt Schnell","nickname":"Danger","height":"5' 8\"","weight":"125 lbs.","reach":"70\"","stance":"Orthodox","dob":"Jan 15, 1990","wins":17,"losses":6,"draws":0,"sig_strikes_landed_per_min":"4.13","striking_accuracy":"40%","sig_strikes_absorbed_per_min":"4.17","striking_defense":"55 %","takedown_avg":"0.49","takedown_accuracy":"40%","takedown_defense":"43%","submission_avg":"1.2","last_3_fights":[]},{"name":"Joseph Morales","nickname":"Bopo","height":" 5' 6\"","weight":"125 lbs.","reach":"69\"","stance":"Switch","dob":"Aug 22, 1994","wins":14,"losses":2,"draws":0,"sig_strikes_landed_per_min":"2.02","striking_accuracy":"40%","sig_strikes_absorbed_per_min":"2.11","striking_defense":"57 %","takedown_avg":" 1.23","takedown_accuracy":"42%","takedown_defense":" 28%","submission_avg":"2.9","last_3_fights":[]},{"name":"Randy Brown","nickname":"Rudeboy","height":" 6' 3\"","weight":"170 lbs.","reach":"78\"","stance":"Orthodox","dob":" Jul 08, 1990","wins":20,"losses":6,"draws":0,"sig_strikes_landed_per_min":"4.47","striking_accuracy":"47%","sig_strikes_absorbed_per_min":"3.26","striking_defense":"55 %","takedown_avg":"0.79","takedown_accuracy":"39%","takedown_defense":"73%","submission_avg":"0.6","last_3_fights":[{"result":"W","opponent":"Nicolas Dalby","method":"KO/TKO","round":"2"},{"result":"L","opponent":"Brian  Battle","method":"Decision - Split","round":"3"},{"result":"W","opponent":"Elizeu Zaleski dos Santos","method":"Decision - Unanimous","round":"3"}]},{"name":"Adrian Yanez","nickname":"","height":"5' 7\"","weight":"135 lbs.","reach":" 70\"","stance":"Orthodox","dob":"Nov 29, 1993","wins":17,"losses":6,"draws":0,"sig_strikes_landed_per_min":"6.23","striking_accuracy":"41%","sig_strikes_absorbed_per_min":"5.75","striking_defense":"54%","takedown_avg":"0.00","takedown_accuracy":"0%","takedown_defense":"81%","submission_avg":"0.0","last_3_fights":[{"result":"L","opponent":"Daniel Marcos","method":"Decision - Split","round":"3"},{"result":"W","opponent":"Vinicius Salvador","method":"KO/TKO","round":"1"},{"result":"L","opponent":"Jonathan Martinez","method":"KO/TKO","round":"2"}]},{"name":"Baisangur Susurkaev","nickname":"Hunter","wins":10,"losses":0,"draws":0,"height":"6' 2\"","weight":"185 lbs.","reach":"79\"","stance":"Orthodox","dob":"Jan 08, 2001","sig_strikes_landed_per_min":"4.56","striking_accuracy":"58%","sig_strikes_absorbed_per_min":"2.88","striking_defense":"57%","takedown_avg":"2.98","takedown_accuracy":"28%","takedown_defense":"100%","submission_avg":"1.5","last_3_fights":[{"result":"W","opponent":"Eric Nolan","method":"Submission","round":"2"}]},{"name":"Eric McConico","nickname":"","wins":10,"losses":3,"draws":1,"height":"6' 0\"","weight":"185 lbs.","reach":"77\"","stance":"Southpaw","dob":"May 09, 1990","sig_strikes_landed_per_min":"1.51","striking_accuracy":"36%","sig_strikes_absorbed_per_min":"2.48","striking_defense":"52%","takedown_avg":"0.00","takedown_accuracy":"0%","takedown_defense":"57%","submission_avg":"0.0","last_3_fights":[{"result":"W","opponent":"Cody Brundage","method":"Decision - Split","round":"3"},{"result":"L","opponent":"Nursulton Ruziboev","method":"KO/TKO","round":"2"}]},{"name":"Angela Hill","nickname":"Overkill","wins":18,"losses":15,"draws":0,"height":"5' 3\"","weight":"115 lbs.","reach":"64\"","stance":"Orthodox","dob":"Jan 12, 1985","sig_strikes_landed_per_min":"5.43","striking_accuracy":"50%","sig_strikes_absorbed_per_min":"4.92","striking_defense":"60%","takedown_avg":"0.78","takedown_accuracy":"30%","takedown_defense":"74%","submission_avg":"0.1","last_3_fights":[{"result":"L","opponent":"Iasmin Lucindo","method":"Decision - Unanimous","round":"3"},{"result":"W","opponent":"Ketlen Souza","method":"Decision - Split","round":"3"},{"result":"L","opponent":"Tabatha Ricci","method":"Decision - Unanimous","round":"3"}]},{"name":"Fatima Kline","nickname":"The Archangel","wins":8,"losses":1,"draws":0,"height":"5' 6\"","weight":"115 lbs.","reach":"67\"","stance":"Orthodox","dob":"Jul 12, 2000","sig_strikes_landed_per_min":"3.94","striking_accuracy":"49%","sig_strikes_absorbed_per_min":"2.29","striking_defense":"59%","takedown_avg":"1.21","takedown_accuracy":"60%","takedown_defense":"50%","submission_avg":"0.0","last_3_fights":[{"result":"W","opponent":"Melissa Martinez","method":"KO/TKO","round":"3"},{"result":"W","opponent":"Viktoriia Dudakova","method":"KO/TKO","round":"2"},{"result":"L","opponent":"Jasmine Jasudavicius","method":"Decision - Unanimous","round":"3"}]},{"name":"Gerald Meerschaert","nickname":"GM3","wins":37,"losses":20,"draws":0,"height":"6' 1\"","weight":"185 lbs.","reach":"77\"","stance":"Southpaw","dob":"Dec 18, 1987","sig_strikes_landed_per_min":"3.02","striking_accuracy":"45%","sig_strikes_absorbed_per_min":"3.49","striking_defense":" 53%","takedown_avg":"1.83","takedown_accuracy":"30%","takedown_defense":"42%","submission_avg":"1.4","last_3_fights":[{"result":"L","opponent":"Michal Oleksiejczuk","method":"KO/TKO","round":"1"},{"result":"L","opponent":"Brad Tavares","method":"Decision - Unanimous","round":"3"},{"result":"L","opponent":"Reinier de Ridder","method":"Submission","round":"3"}]},{"name":"Kyle Daukaus","nickname":"","wins":16,"losses":4,"draws":0,"height":"6' 2\"","weight":"185 lbs.","reach":"76\"","stance":"Southpaw","dob":"Feb 27, 1993","sig_strikes_landed_per_min":"3.25","striking_accuracy":"53%","sig_strikes_absorbed_per_min":"2.93","striking_defense":"42%","takedown_avg":"2.11","takedown_accuracy":"25%","takedown_defense":"82%","submission_avg":"1.9","last_3_fights":[{"result":"W","opponent":"Michel Pereira","method":"KO/TKO","round":"1"},{"result":"L","opponent":"Eric Anders","method":"KO/TKO","round":"2"},{"result":"L","opponent":"Roman Dolidze","method":"KO/TKO","round":"1"}]},{"name":"Cody Haddon","nickname":"","wins":8,"losses":0,"draws":0,"height":"5' 7\"","weight":"135 lbs.","reach":"69\"","stance":"Orthodox","dob":"Sep 08, 1998","sig_strikes_landed_per_min":"9.20","striking_accuracy":"51%","sig_strikes_absorbed_per_min":"3.47","striking_defense":"64%","takedown_avg":"2.48","takedown_accuracy":"37%","takedown_defense":"83%","submission_avg":"0.8","last_3_fights":[{"result":"W","opponent":"Dan Argueta","method":"Decision - Unanimous","round":"3"}]},{"name":"Malcolm Wellmaker","nickname":"The Machine","wins":10,"losses":0,"draws":0,"height":"5' 10\"","weight":"135 lbs.","reach":"71\"","stance":"Switch","dob":"Jun 04, 1994","sig_strikes_landed_per_min":"7.20","striking_accuracy":"62%","sig_strikes_absorbed_per_min":"4.80","striking_defense":"60%","takedown_avg":"0.00","takedown_accuracy":"0%","takedown_defense":"100%","submission_avg":"0.0","last_3_fights":[{"result":"W","opponent":"Kris Moutinho","method":"KO/TKO","round":"1"},{"result":"W","opponent":"Cameron Saaiman","method":"KO/TKO","round":"1"}]},{"name":"Tracy Cortez","nickname":"","wins":12,"losses":2,"draws":0,"height":"5' 5\"","weight":"125 lbs.","reach":"65\"","stance":"Orthodox","dob":"Dec 10, 1993","sig_strikes_landed_per_min":"3.79","striking_accuracy":"49%","sig_strikes_absorbed_per_min":"2.84","striking_defense":"57%","takedown_avg":"2.19","takedown_accuracy":"47%","takedown_defense":"62%","submission_avg":"0.3","last_3_fights":[{"result":"W","opponent":"Viviane Araújo","method":"Decision - Unanimous","round":"3"},{"result":"L","opponent":"Rose Namajunas","method":"Decision - Unanimous","round":"5"},{"result":"W","opponent":"Jasmine Jasudavicius","method":"Decision - Unanimous","round":"3"}]},{"name":"Gregory Rodrigues","nickname":"Robocop","wins":17,"losses":5,"draws":0,"height":"6' 3\"","weight":"185 lbs.","reach":"75\"","stance":"Orthodox","dob":"Feb 17, 1992","sig_strikes_landed_per_min":"5.54","striking_accuracy":"51%","sig_strikes_absorbed_per_min":"5.04","striking_defense":"50%","takedown_avg":"2.21","takedown_accuracy":"38%","takedown_defense":"90%","submission_avg":"0.3","last_3_fights":[{"result":"W","opponent":"Jack Hermansson","method":"KO/TKO","round":"1"},{"result":"L","opponent":"Jared Cannonier","method":"KO/TKO","round":"4"},{"result":"W","opponent":"Christian Leroy Duncan","method":"Decision - Unanimous","round":"3"}]},{"name":"Roman Kopylov","nickname":"","wins":14,"losses":4,"draws":0,"height":"6' 0\"","weight":"185 lbs.","reach":"75\"","stance":"Southpaw","dob":"May 04, 1991","sig_strikes_landed_per_min":"4.74","striking_accuracy":"50%","sig_strikes_absorbed_per_min":"5.08","striking_defense":"53%","takedown_avg":"1.02","takedown_accuracy":"42%","takedown_defense":"87%","submission_avg":"0.0","last_3_fights":[{"result":"L","opponent":"Paulo Costa","method":"Decision - Unanimous","round":"3"},{"result":"W","opponent":"Chris Curtis","method":"KO/TKO","round":"3"},{"result":"W","opponent":"Cesar Almeida","method":"Decision - Split","round":"3"}]},{"name":"Beneil Dariush","nickname":"","wins":23,"losses":6,"draws":1,"height":"5' 10\"","weight":"155 lbs.","reach":"72\"","stance":"Southpaw","dob":"May 06, 1989","sig_strikes_landed_per_min":"3.78","striking_accuracy":"49%","sig_strikes_absorbed_per_min":"2.61","striking_defense":"57%","takedown_avg":"2.12","takedown_accuracy":"38%","takedown_defense":"82%","submission_avg":"80.8","last_3_fights":[{"result":"W","opponent":"Renato Moicano","method":"Decision - Unanimous","round":"3"},{"result":"L","opponent":"Arman Tsarukyan","method":"KO/TKO","round":"1"},{"result":"L","opponent":"Charles Oliveira","method":"KO/TKO","round":"1"}]},{"name":"Benoît Saint Denis","nickname":"God of War","wins":15,"losses":23,"draws":0,"height":"5' 11\"","weight":"155 lbs.","reach":"73\"","stance":"Southpaw","dob":"Dec 18, 1995","sig_strikes_landed_per_min":"5.05","striking_accuracy":"55%","sig_strikes_absorbed_per_min":"4.19","striking_defense":"42%","takedown_avg":"4.35","takedown_accuracy":"37%","takedown_defense":"70%","submission_avg":"1.6","last_3_fights":[{"result":"W","opponent":"Mauricio Ruffy","method":"Submission","round":"2"},{"result":"W","opponent":"Kyle Prepolec","method":"Submission","round":"2"},{"result":"L","opponent":"Renato Moicano","method":"TKO - Doctor's Stoppage","round":"2"}]},{"name":"Bo Nickal","nickname":"","wins":7,"losses":1,"draws":0,"height":"6' 1\"","weight":"185 lbs.","reach":"76\"","stance":"Southpaw","dob":"Jan 14, 1996","sig_strikes_landed_per_min":"2.36","striking_accuracy":"59%","sig_strikes_absorbed_per_min":"2.11","striking_defense":"58%","takedown_avg":"3.34","takedown_accuracy":"53%","takedown_defense":"100%","submission_avg":"2.9","last_3_fights":[{"result":"L","opponent":"Reinier de Ridder","method":"KO/TKO","round":"2"},{"result":"W","opponent":"Paul Craig","method":"Decision - Unanimous","round":"3"},{"result":"W","opponent":"Cody Brundage","method":"Submission","round":"2"}]},{"name":"Rodolfo Vieira","nickname":"","wins":11,"losses":1,"draws":0,"height":"6' 0\"","weight":"185 lbs.","reach":"73\"","stance":"Orthodox","dob":"Sep 25, 1989","sig_strikes_landed_per_min":"3.77","striking_accuracy":"55%","sig_strikes_absorbed_per_min":"4.12","striking_defense":"51%","takedown_avg":"3.09","takedown_accuracy":"23%","takedown_defense":"100%","submission_avg":"1.0","last_3_fights":[{"result":"W","opponent":"Tresean Gore","method":"Decision - Unanimous","round":"3"},{"result":"L","opponent":"Andre Petroski","method":"Decision - Unanimous","round":"3"},{"result":"W","opponent":"Armen Petrosyan","method":"Submission","round":"1"}]},{"name":"Carlos Prates","nickname":"The Nightmare","wins":22,"losses":6,"draws":0,"height":"6' 1\"","weight":"170 lbs.","reach":"78\"","stance":"Switch","dob":"Aug 17, 1993","sig_strikes_landed_per_min":"3.82","striking_accuracy":"54%","sig_strikes_absorbed_per_min":"4.80","striking_defense":"48%","takedown_avg":"0.23","takedown_accuracy":"100%","takedown_defense":"84%","submission_avg":"0.0","last_3_fights":[{"result":"W","opponent":"Geoff Neal","method":"KO/TKO","round":"1"},{"result":"L","opponent":"Ian Machado Garry","method":"Decision - Unanimous","round":"5"},{"result":"W","opponent":"Neil Magny","method":"KO/TKO","round":"1"}]},{"name":"Leon Edwards","nickname":"Rocky","wins":22,"losses":5,"draws":0,"height":"6' 2\"","weight":"170 lbs.","reach":"74\"","stance":"Southpaw","dob":"Aug 25, 1991","sig_strikes_landed_per_min":"2.62","striking_accuracy":"54%","sig_strikes_absorbed_per_min":"2.42","striking_defense":"53%","takedown_avg":"1.18","takedown_accuracy":"36%","takedown_defense":"63%","submission_avg":"0.4","last_3_fights":[{"result":"L","opponent":"Sean Brady","method":"Submission","round":"4"},{"result":"L","opponent":"Belal Muhammad","method":"Decision - Unanimous","round":"5"},{"result":"W","opponent":"Colby Covington","method":"Decision - Unanimous","round":"5"}]},{"name":"Michael Morales","nickname":"","wins":18,"losses":1,"draws":0,"height":"6' 0\"","weight":"170 lbs.","reach":"79\"","stance":"Orthodox","dob":"Jun 24, 1999","sig_strikes_landed_per_min":"5.62","striking_accuracy":"49%","sig_strikes_absorbed_per_min":"3.31","striking_defense":"53%","takedown_avg":"1.09","takedown_accuracy":"41%","takedown_defense":"89%","submission_avg":"0.0","last_3_fights":[{"result":"W","opponent":"Gilbert Burns","method":"KO/TKO","round":"1"},{"result":"W","opponent":"Neil Magny","method":"KO/TKO","round":"1"},{"result":"W","opponent":"Jake Matthews","method":"Decision - Unanimous","round":"3"}]},{"name":"Valentina Shevchenko","nickname":"Bullet","wins":25,"losses":4,"draws":0,"height":"5' 5\"","weight":"125 lbs.","reach":"66\"","stance":"Southpaw","dob":"Mar 07, 1988","sig_strikes_landed_per_min":"3.14","striking_accuracy":"52%","sig_strikes_absorbed_per_min":"2.06","striking_defense":"63%","takedown_avg":"2.62","takedown_accuracy":"60%","takedown_defense":"75%","submission_avg":"0.3","last_3_fights":[{"result":"","opponent":"Manon Fiorot","method":"Decision - Unanimous","round":"5"},{"result":"W","opponent":"Alexa Grasso","method":"Decision - Unanimous","round":"5"},{"result":"D","opponent":"Alexa Grasso","method":"Decision - Split","round":"5"}]},{"name":"Jack Della Maddalena","nickname":"","wins":18,"losses":1,"draws":0,"height":"5' 11\"","weight":"170 lbs.","reach":"73\"","stance":"Switch","dob":"Sep 10, 1996","sig_strikes_landed_per_min":"6.84","striking_accuracy":"52%","sig_strikes_absorbed_per_min":"4.53","striking_defense":"64%","takedown_avg":"0.16","takedown_accuracy":"11%","takedown_defense":"69%","submission_avg":"0.2","last_3_fights":[{"result":"W","opponent":"Belal Muhammad","method":"Decision - Unanimous","round":"5"},{"result":"W","opponent":"Gilbert Burns","method":"KO/TKO","round":"3"},{"result":"W","opponent":"Kevin Holland","method":"Decision - Split","round":"3"}]},{"name":"Islam Makhachev","nickname":"","wins":27,"losses":1,"draws":0,"height":"5' 10\"","weight":"170 lbs.","reach":"70\"","stance":"Southpaw","dob":"Oct 27, 1991","sig_strikes_landed_per_min":"2.63","striking_accuracy":"58%","sig_strikes_absorbed_per_min":"1.55","striking_defense":"61%","takedown_avg":" 3.20","takedown_accuracy":"53%","takedown_defense":"90%","submission_avg":"1.1","last_3_fights":[{"result":"W","opponent":"Renato Moicano","method":"Submission","round":"1"},{"result":"W","opponent":"Dustin Poirier","method":"Submission","round":"5"},{"result":"W","opponent":"Alexander Volkanovski","method":"KO/TKO","round":"1"}]},{"name":"Ismail Naurdiev","nickname":"Berzdog","wins":24,"losses":7,"draws":0,"height":"5' 10\"","weight":"185 lbs.","reach":"74\"","stance":"Orthodox","dob":"Aug 18, 1996","sig_strikes_landed_per_min":"3.69","striking_accuracy":"52%","sig_strikes_absorbed_per_min":"1.77","striking_defense":"64%","takedown_avg":"1.50","takedown_accuracy":"40%","takedown_defense":"73%","submission_avg":"0.2","last_3_fights":[{"result":"L","opponent":"JunYong Park","method":"Decision - Unanimous","round":"3"},{"result":"W","opponent":"Bruno Silva","method":"Decision - Unanimous","round":"3"},{"result":"L","opponent":"Sean Brady","method":"Dec","round":"3"}]},{"name":"Ryan Loder","nickname":"Man of Steel","wins":8,"losses":0,"draws":0,"height":"6' 2\"","weight":"185 lbs.","reach":"76\"","stance":"Southpaw","dob":"Jun 05, 1991","sig_strikes_landed_per_min":"5.76","striking_accuracy":"71%","sig_strikes_absorbed_per_min":"2.51","striking_defense":"50%","takedown_avg":"1.57","takedown_accuracy":"14%","takedown_defense":"100%","submission_avg":"1.6","last_3_fights":[{"result":"L","opponent":"Azamat Bekoev","method":"KO/TKO","round":"1"},{"result":"W","opponent":"Robert Valentin","method":"KO/TKO","round":"2"}]},{"name":"Aleksandre Topuria","nickname":"El Conquistador","wins":6,"losses":1,"draws":0,"height":"5' 7\"","weight":"135 lbs.","reach":"68\"","stance":"Orthodox","dob":"Jan 28, 1996","sig_strikes_landed_per_min":"2.73","striking_accuracy":"51%","sig_strikes_absorbed_per_min":"2.53","striking_defense":"70%","takedown_avg":"1.00","takedown_accuracy":"50%","takedown_defense":"100%","submission_avg":"0.0","last_3_fights":[{"result":"W","opponent":"Colby Thicknesse","method":"Decision - Unanimous","round":"3"}]},{"name":"Tagir Ulanbekov","nickname":"","wins":17,"losses":1,"draws":0,"height":"5' 7\"","weight":"125 lbs.","reach":"70\"","stance":"Southpaw","dob":"Aug 07, 1991","sig_strikes_landed_per_min":"3.37","striking_accuracy":"49%","sig_strikes_absorbed_per_min":"3.36","striking_defense":"52%","takedown_avg":"2.94","takedown_accuracy":"38%","takedown_defense":"62%","submission_avg":"1.6","last_3_fights":[{"result":"W","opponent":"Azat Maksum","method":"Decision - Unanimous","round":"3"},{"result":"W","opponent":"Clayton Carpenter","method":"Decision - Unanimous","round":"3"},{"result":"W","opponent":"Cody Durden","method":"Submission","round":"2"}]},{"name":"Kyoji Horiguchi","nickname":"","wins":18,"losses":1,"draws":0,"height":"5' 5\"","weight":"125 lbs.","reach":"66\"","stance":"Orthodox","dob":"Oct 12, 1990","sig_strikes_landed_per_min":"3.60","striking_accuracy":"45%","sig_strikes_absorbed_per_min":"2.45","striking_defense":"62%","takedown_avg":"2.00","takedown_accuracy":"44%","takedown_defense":"55%","submission_avg":"0.0","last_3_fights":[{"result":"W","opponent":"Ali Bagautinov","method":"DEC","round":"3"},{"result":"W","opponent":"Neil Seery","method":"DEC","round":"3"},{"result":"W","opponent":"Chico Camus","method":"DEC","round":"3"}]},{"name":"Abdulrakhman Yakhyaev","nickname":"","wins":1,"losses":0,"draws":0,"height":"6' 2\"","weight":"205 lbs.","reach":"78\"","stance":"Orthodox","dob":"Jan 03, 2001","sig_strikes_landed_per_min":"32.00","striking_accuracy":"88%","sig_strikes_absorbed_per_min":"2.00","striking_defense":"66%","takedown_avg":"0.00","takedown_accuracy":"0%","takedown_defense":"100%","submission_avg":"0.0","last_3_fights":[]},{"name":"Rafael Cerqueira","nickname":"The Lion","wins":11,"losses":1,"draws":0,"height":"6' 3\"","weight":"205 lbs.","reach":"76\"","stance":"Southpaw","dob":"Mar 15, 1990","sig_strikes_landed_per_min":"1.61","striking_accuracy":"44%","sig_strikes_absorbed_per_min":"4.88","striking_defense":"36%","takedown_avg":"0.00","takedown_accuracy":"0%","takedown_defense":"40%","submission_avg":"0.0","last_3_fights":[{"result":"L","opponent":"Julius Walker","method":"Decision - Unanimous","round":"3"},{"result":"L","opponent":"Modestas Bukauskas","method":"KO/TKO","round":"1"},{"result":"L","opponent":"Ibo Aslan","method":"KO/TKO","round":"1"}]},{"name":"Bogdan Grad","nickname":"The Unleashed","wins":15,"losses":2,"draws":0,"height":"5' 8\"","weight":"145 lbs.","reach":"70\"","stance":"Orthodox","dob":"Sep 28, 1995","sig_strikes_landed_per_min":"4.44","striking_accuracy":"51%","sig_strikes_absorbed_per_min":"5.40","striking_defense":"49%","takedown_avg":"3.31","takedown_accuracy":"36%","takedown_defense":"75%","submission_avg":"0.0","last_3_fights":[{"result":"L","opponent":"Muhammad Naimov","method":"Decision - Unanimous","round":"3"}]},{"name":"Alex Perez","nickname":"","wins":25,"losses":8,"draws":0,"height":"5' 6\"","weight":"125 lbs.","reach":"65\"","stance":"Orthodox","dob":"Mar 21, 1992","sig_strikes_landed_per_min":"4.19","striking_accuracy":"46%","sig_strikes_absorbed_per_min":"3.20","striking_defense":"58%","takedown_avg":"2.04","takedown_accuracy":"46%","takedown_defense":"77%","submission_avg":"0.8","last_3_fights":[{"result":"L","opponent":"Tatsuro Taira","method":"KO/TKO","round":"2"},{"result":"W","opponent":"Matheus Nicolau","method":"KO/TKO","round":"2"},{"result":"L","opponent":"Muhammad Mokaev","method":"Decision - Unanimous","round":"3"}]},{"name":"Serghei Spivac","nickname":"Polar Bear","wins":17,"losses":6,"draws":0,"height":"6' 3\"","weight":"260 lbs.","reach":"78\"","stance":"Orthodox","dob":"Jan 24, 1995","sig_strikes_landed_per_min":"3.45","striking_accuracy":"48%","sig_strikes_absorbed_per_min":"4.25","striking_defense":"50%","takedown_avg":"4.21","takedown_accuracy":"62%","takedown_defense":"63%","submission_avg":"0.5","last_3_fights":[{"result":"L","opponent":"Waldo Cortes Acosta","method":"Decision - Unanimous","round":"3"},{"result":"L","opponent":"Jailton Almeida","method":"KO/TKO","round":"1"},{"result":"W","opponent":"Marcin Tybura","method":"Submission","round":"1"}]},{"name":"Shamil Gaziev","nickname":"","wins":14,"losses":0,"draws":0,"height":"6' 4","weight":"265 lbs","reach":"78\"","stance":"Orthodox","dob":"Feb 10, 1990","sig_strikes_landed_per_min":"2.57","striking_accuracy":"48%","sig_strikes_absorbed_per_min":"3.87","striking_defense":"44%","takedown_avg":"0.96","takedown_accuracy":"30%","takedown_defense":"83%","submission_avg":"0.3","last_3_fights":[{"result":"W","opponent":"Thomas Petersen","method":"KO/TKO","round":"1"},{"result":"W","opponent":"Don'Tale Mayes","method":"Decision - Unanimous","round":"3"},{"result":"L","opponent":"Jairzinho Rozenstruik","method":"KO/TKO","round":"4"}]},{"name":"Jack Hermansson","nickname":"The Joker","wins":24,"losses":9,"draws":0,"height":"6' 1\"","weight":"170 lbs.","reach":"77\"","stance":"Orthodox","dob":"Jun 10, 1988","sig_strikes_landed_per_min":"5.13","striking_accuracy":"45%","sig_strikes_absorbed_per_min":"3.70","striking_defense":"57%","takedown_avg":"1.50","takedown_accuracy":"29%","takedown_defense":"80%","submission_avg":"0.4","last_3_fights":[{"result":"L","opponent":"Gregory Rodrigues","method":"KO/TKO","round":"1"},{"result":"W","opponent":"Joe Pyfer","method":"Decision - Unanimous","round":"5"},{"result":"L","opponent":"Roman Dolidze","method":"KO/TKO","round":"2"}]}];
+
+        function step1_restore() {
+            try {
+                // Store with correct key that App.jsx looks for
+                localStorage.setItem('custom_fighters', JSON.stringify(backupData));
+                
+                showStatus('✅ Step 1 Complete! 53 fighters restored to localStorage.', 'success');
+                
+                // Show step 2
+                document.getElementById('step2').style.display = 'block';
+                
+            } catch (error) {
+                showStatus('❌ Error: ' + error.message, 'warning');
+            }
+        }
+
+        function checkStorage() {
+            const current = localStorage.getItem('custom_fighters');
+            if (!current) {
+                showStatus('ℹ️ No custom fighters currently in localStorage.', 'info');
+                return;
+            }
+            
+            try {
+                const fighters = JSON.parse(current);
+                const fighterList = fighters.slice(0, 10).map(f => f.name).join(', ');
+                const more = fighters.length > 10 ? ` and ${fighters.length - 10} more...` : '';
+                showStatus(
+                    `ℹ️ Current storage contains ${fighters.length} fighters:<br><br>${fighterList}${more}`,
+                    'info'
+                );
+            } catch (error) {
+                showStatus('⚠️ Current data appears corrupted: ' + error.message, 'warning');
+            }
+        }
+
+        function downloadBackup() {
+            const json = JSON.stringify(backupData, null, 2);
+            const blob = new Blob([json], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `custom_fighters_permanent_backup_${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showStatus('💾 Backup downloaded! Save this file somewhere safe (like Dropbox or Google Drive).', 'success');
+        }
+
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerHTML = message;
+            statusDiv.className = 'status ' + type;
+            statusDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

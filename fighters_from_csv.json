@@ -55119,45 +55119,5 @@
     "dob": "",
     "nickname": "",
     "last_3_fights": []
-  },
-  {
-    "name": "Iwo Baraniewski",
-    "nickname": "Rudy",
-    "wins": 6,
-    "losses": 0,
-    "draws": 0,
-    "height": "6' 0\"",
-    "weight": "205 lbs.",
-    "reach": "73\"",
-    "stance": "Orthodox",
-    "dob": "Nov 20, 1998",
-    "sig_strikes_landed_per_min": "12.00",
-    "striking_accuracy": "66%",
-    "sig_strikes_absorbed_per_min": "6.00",
-    "striking_defense": "33%",
-    "takedown_avg": "0.00",
-    "takedown_accuracy": "0%",
-    "takedown_defense": "0%",
-    "submission_avg": "0.0",
-    "last_3_fights": [
-      {
-        "result": "W",
-        "opponent": "Robert Valentin",
-        "method": "KO/TKO",
-        "round": "1"
-      },
-      {
-        "result": "W",
-        "opponent": "TBA",
-        "method": "TBA",
-        "round": "TBA"
-      },
-      {
-        "result": "W",
-        "opponent": "TBA",
-        "method": "TBA",
-        "round": "TBA"
-      }
-    ]
   }
 ]
